@@ -61,4 +61,17 @@ RSpec.describe "Movies", type: :request do
 
     end
   end
+
+  describe 'DELETE api/v1/movies/1' do
+
+    it 'deletes an entry' do
+      movie = create(:movie)
+
+      delete "/api/v1/movies/#{movie.id}"
+
+      json = JSON.parse(response.body)
+      expect(response).to have_http_status(302)
+      expect(json.length).to eq(0)
+    end
+  end
 end
