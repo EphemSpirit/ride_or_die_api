@@ -35,6 +35,7 @@ class Api::V1::MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
+    redirect_to api_v1_movies_path
   end
 
   private
